@@ -23,7 +23,7 @@ class ToDoApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.brown,
+        primarySwatch: Colors.green,
       ),
       home: const HomeScreen(),
     );

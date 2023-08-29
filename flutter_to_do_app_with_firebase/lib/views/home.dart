@@ -1,3 +1,5 @@
+import 'package:calendar_appbar/calendar_appbar.dart';
+import 'package:date_field/date_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../widgets/add_task_dialog.dart';
@@ -14,20 +16,46 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final PageController pageController = PageController(initialPage: 0);
   late int _selectedIndex = 0;
+  DateTime? selectedDate;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text("To-Do List"),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(CupertinoIcons.calendar),
-          ),
-        ],
+      appBar: CalendarAppBar(
+        onDateChanged: (value) => print(value),
+        firstDate: DateTime.now().subtract(Duration(days: 140)),
+        lastDate: DateTime.now(),
+        accent: Colors.green,
       ),
+      // appBar: AppBar(
+      //   centerTitle: true,
+      //   title: const Text("To-Do List"),
+      //   actions: [
+      //     IconButton(
+      //       onPressed: () {},
+      //       icon: const Icon(CupertinoIcons.calendar),
+      //     ),
+      //     // Expanded(
+      //     //   // flex: 3,
+      //     //   child: DateTimeFormField(
+      //     //     initialDate: DateTime.now(),
+      //     //     initialValue: DateTime.now(),
+      //     //     mode: DateTimeFieldPickerMode.date,
+      //     //     decoration: const InputDecoration(
+      //     //       isDense: true,
+      //     //       contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      //     //       hintStyle: TextStyle(color: Colors.black45),
+      //     //       errorStyle: TextStyle(color: Colors.redAccent),
+      //     //       border: OutlineInputBorder(),
+      //     //       suffixIcon: Icon(Icons.event_note),
+      //     //     ),
+      //     //     onDateSelected: (DateTime value) {
+      //     //       selectedDate = value;
+      //     //     },
+      //     //   ),
+      //     // ),
+      //   ],
+      // ),
       extendBody: true,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
