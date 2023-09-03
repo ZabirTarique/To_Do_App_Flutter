@@ -2,6 +2,7 @@ import 'package:calendar_appbar/calendar_appbar.dart';
 import 'package:date_field/date_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import '../widgets/add_task_dialog.dart';
 import 'tasks.dart';
 import 'categories.dart';
@@ -17,13 +18,20 @@ class _HomeScreenState extends State<HomeScreen> {
   final PageController pageController = PageController(initialPage: 0);
   late int _selectedIndex = 0;
   DateTime? selectedDate;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    FlutterNativeSplash.remove();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CalendarAppBar(
-        onDateChanged: (value) => print(value),
-        firstDate: DateTime.now().subtract(Duration(days: 140)),
+        backButton: false,
+        onDateChanged: (value) {},
+        firstDate: DateTime.now().subtract(const Duration(days: 140)),
         lastDate: DateTime.now(),
         accent: Colors.green,
       ),
@@ -104,9 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Center(
             child: Tasks(),
           ),
-          Center(
-            child: Categories(),
-          ),
+          Categories(),
         ],
       ),
     );

@@ -22,7 +22,7 @@ class _TasksState extends State<Tasks> {
         stream: fireStore.collection('tasks').snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return const Text('No tasks to display');
+            return const Center(child: CircularProgressIndicator());
           } else {
             return ListView(
               children: snapshot.data!.docs.map((DocumentSnapshot document) {

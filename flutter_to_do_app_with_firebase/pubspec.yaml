@@ -17,6 +17,7 @@ dependencies:
   date_time_picker: ^2.1.0
   date_field: ^3.0.2
   calendar_appbar: ^0.0.6
+  flutter_native_splash: ^2.3.2
 
 
 dev_dependencies:
